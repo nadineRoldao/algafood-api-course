@@ -1,5 +1,6 @@
 package com.algaworks.algafoodapi;
 
+import com.algaworks.algafoodapi.di.modelo.Cliente;
 import com.algaworks.algafoodapi.di.service.AtivacaoClienteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,13 @@ public class MeuPrimeiroController {
         this.ativacaoClienteService = ativacaoClienteService;
     }
 
-    @GetMapping(value = "hello")
+    @GetMapping("/hello")
     @ResponseBody
-    public String hello(){
-        return "Hel254  lllo!";
+    public String hello() {
+        Cliente joao = new Cliente("João", "joao@xyz.com", "3499998888");
+
+        ativacaoClienteService.ativar(joao);
+
+        return "Hello!";
     }
 }
